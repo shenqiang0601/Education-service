@@ -71,7 +71,7 @@
 
     <!-- 输入框 -->
     <McLayoutSender>
-      <McInput :value="inputValue" :maxLength="2000" @change="(e) => (inputValue = e)" @submit="onSubmit">
+      <McInput :value="inputValue" :maxLength="2000" @change="(e: string) => (inputValue = e)" @submit="onSubmit">
         <template #extra>
           <div class="input-foot-wrapper">
             <div class="input-foot-left">
@@ -101,7 +101,7 @@ import { Button } from 'vue-devui/button';
 import 'vue-devui/button/style.css';
 import { modelConfig } from './config/model.config';
 import OpenAI from 'openai';
-import { renderMarkdown } from './utils/markdown';
+// import { renderMarkdown } from './utils/markdown';
 import 'highlight.js/styles/github.css';
 
 // 消息容器的引用
@@ -111,7 +111,7 @@ const messageContainer = ref<HTMLElement | null>(null);
 const scrollToBottom = () => {
   nextTick(() => {
     if (messageContainer.value) {
-      const container = messageContainer.value.$el || messageContainer.value;
+      const container = messageContainer.value;
       container.scrollTop = container.scrollHeight;
     }
   });
